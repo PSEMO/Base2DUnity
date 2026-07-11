@@ -63,6 +63,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Rotater
   rotationSpeed: 90
   rotationAxis: {x: 0, y: 0, z: 1}
+  unscaledTime: 0
+  useGlobalTime: 0
 --- !u!114 &5356975817450304239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,7 +126,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 90a936c422fe7763fa4417318b85d2a5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f0c70b5d980ed8ac69294c71956c8a9b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

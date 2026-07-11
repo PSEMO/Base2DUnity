@@ -63,7 +63,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36d52eb5ffca04d3bb4ff634c0fccf68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  data: {fileID: 11400000, guid: 2687d7ebbf26a5006ac18742b1371c25, type: 2}
   respawnPos: {x: 0, y: 0, z: 0}
+  ableToInteract: 0
 --- !u!114 &8742660120965922276
 MonoBehaviour:
   m_ObjectHideFlags: 0

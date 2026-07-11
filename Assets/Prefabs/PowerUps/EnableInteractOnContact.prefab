@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e728823bd013eef759cdd12bb121b8e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PSEMO.Environment.Functionality.Enabler.EnableAbilityOnContact
-  abilityType: 3
+  abilityType: 0
   isCollected: 0
 --- !u!61 &6181089032616330735
 BoxCollider2D:
