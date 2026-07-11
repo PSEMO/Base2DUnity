@@ -1,8 +1,8 @@
 > ### Okay, **listen**... 
 > Yes, the 'README' was written by AI but just check the project out, it really is cool. It's highly scalable and highly configurable. Has like cool systems in it. I am particularly in love with the StateMachine. The stuff that are not exactly 'base' are highly modular. And although the 'README' smells AI, it actually summarized the project pretty good ^^
 
-# Base 2D Unity Platformer
-A production-ready, highly scalable, and decoupled 2D platformer template for Unity. Serving as a robust foundation for advanced games, it leverages modern design patterns and best practices to ensure clean separation of concerns. A custom node-based State Machine and Event-Driven architecture eliminate rigid inheritance and tightly coupled logic. The framework features a capable persistence system, custom Object Pooling to prevent GC spikes, Unity's new Input System, and embraces ScriptableObjects
+# Base 2D Unity template
+A production-ready, highly scalable, and decoupled 2D template for Unity. Serving as a robust foundation for advanced games, it leverages modern design patterns and best practices to ensure clean separation of concerns. A custom node-based State Machine and Event-Driven architecture eliminate rigid inheritance and tightly coupled logic. The framework features a capable persistence system, custom Object Pooling to prevent GC spikes, Unity's new Input System, and embraces ScriptableObjects
 
 ## Key Highlights
 ### 1. Highly Modular & Decoupled Architecture
@@ -12,13 +12,15 @@ The architecture is designed with a strict separation of concerns, heavily relyi
 To maintain loose coupling, the project utilizes an extensive event-based communication system. Static C# `Action` and `Func` events (such as `PlayerEvents` and `UIEvents`) ensure that systems can broadcast and listen to state changes without hard dependencies.
 
 ### 3. Advanced State Machine System
-Game states are governed by a powerful, generic `StateMachine` graph. 
+Character behaviors and game states are governed by a powerful, generic `StateMachine` graph. 
 * **State Nodes**: Encapsulate specific logic for different states.
 * **Transitions**: Driven by `ITransition` interfaces and evaluated through `IPredicate` logic, ensuring clean and deterministic state flow.
 
 ### 4. Robust Persistence System
 The save/load system is highly flexible, multi-threaded, and centered around the `PersistenceManager`.
 * **IPersistable**: Components implement this interface to easily hook into the save system.
+* **Infinite Save Slots**: The architecture seamlessly scales to support an infinite number of save slots, with UI logic appropriately adapted.
+* **Level Progression & Replayability**: Automatically calculates unlocked levels and allows scene-specific save deletion, ensuring players can replay fresh levels without losing their overarching global progression.
 * **Scene vs. Global Persistence**: Cleanly differentiates between **scene-based** data and **global** data, ensuring seamless loading across level transitions.
 * **Serialization**: Utilizes a custom `SerializableDictionary` (wrapper for dual lists) to handle complex data structures, serialized cleanly via `JsonUtility` (e.g., `PlayerSaveData`).
 * **Multi-Threaded Operations**: File I/O operations for saving and loading run asynchronously on separate threads, preventing frame drops during autosaves.
@@ -30,10 +32,10 @@ The save/load system is highly flexible, multi-threaded, and centered around the
 Performance is prioritized with a highly optimized object pooling system. An `Instantiator` manages pools based on `Pooler` component group names, minimizing garbage collection spikes and ensuring smooth runtime performance during heavy instantiation events.
 
 ### 7. Advanced State-Machine-Driven UI
-The user interface is treated as a first-class citizen. A state-machine-driven UI system seamlessly manages hierarchical views featuring both `NavigationPanel`s and `SubPanel`s. It includes a rich, SO-driven transition system (`TransitionSO`) to easily orchestrate complex UI animations such as directional sliding and fading without hardcoded UI logic.
+The user interface is treated as a first-class citizen. A state-machine-driven UI system seamlessly manages hierarchical views featuring both `NavigationPanel`s and `SubPanel`s, even integrating elements like loading backgrounds directly as panels. It includes a deeply decoupled, SO-driven transition system leveraging `UIAnimator`, `UITransitionPlayer`, and modular scripts like `BaseTransitionPlayer` and `ElementTransitionPlayer`. This allows orchestrating complex UI animations such as directional sliding, fading, and half-hidden elements without hardcoded UI logic.
 
 ### 8. Editor Tooling & Best Practices
-The project utilizes `UNITY_EDITOR` preprocessor directives to create custom development-only tools, such as `BoxGizmos` for visualizing colliders and `PersisterEditor` for debugging persistence logic directly in the Unity Editor, ensuring the production build remains lightweight.
+The project utilizes `UNITY_EDITOR` preprocessor directives to create custom development-only tools, such as `BoxGizmos` for visualizing colliders, `PersisterEditor` for debugging persistence logic, and `NavigationPanelEditor` for seamlessly managing UI navigation hierarchies directly in the Unity Editor, ensuring the production build remains lightweight.
 
 ### 9. Advanced Audio System
 Features a dedicated, Singleton-based audio manager that utilizes scriptable data containers for sound definitions. It fully supports dynamic crossfading between music tracks and manages spatial/impact sound effects effortlessly with proper logarithmic volume scaling.
@@ -57,8 +59,6 @@ Equipped with runtime diagnostic utilities, such as a built-in Lag Detector, all
 * **Production Ready**: From the robust persistence system to the editor-only debugging tools, this base is built to ship.
 
 ## Attributions
-* Sprites:
-    * https://kenney.nl/assets/platformer-pack-remastered
 * SFX
     * https://kenney.nl/assets/impact-sounds
 * Music
