@@ -6,13 +6,13 @@ A production-ready, highly scalable, and decoupled 2D platformer template for Un
 
 ## Key Highlights
 ### 1. Highly Modular & Decoupled Architecture
-The architecture is designed with a strict separation of concerns, heavily relying on **Interface-Driven Design** (`IPersistable`, `IState`, `IMover`, `IPoolable`, `IInteractable`). This allows for individual subsystems to operate independently, making the codebase highly testable and extensible. Core entities like the Player are decomposed into specialized, single-purpose components (e.g., `PlayerInputHandler`, `PlayerSurfaceDetector`, `PlayerStateMachineController`) rather than monolithic scripts.
+The architecture is designed with a strict separation of concerns, heavily relying on **Interface-Driven Design** (`IPersistable`, `IState`, `IMover`, `IPoolable`, `IInteractable`). This allows for individual subsystems to operate independently, making the codebase highly testable and extensible. Core entities like the Player are decomposed into specialized, single-purpose components (e.g., `PlayerInputHandler`) rather than monolithic scripts.
 
 ### 2. Event-Driven Communication
-To maintain loose coupling, the project utilizes an extensive event-based communication system. Static C# `Action` and `Func` events (such as `PoolingEvents`, `PlayerEvents`, and `UIEvents`) ensure that systems can broadcast and listen to state changes without hard dependencies.
+To maintain loose coupling, the project utilizes an extensive event-based communication system. Static C# `Action` and `Func` events (such as `PlayerEvents` and `UIEvents`) ensure that systems can broadcast and listen to state changes without hard dependencies.
 
 ### 3. Advanced State Machine System
-Character behaviors and game states are governed by a powerful, generic `StateMachine` graph. 
+Game states are governed by a powerful, generic `StateMachine` graph. 
 * **State Nodes**: Encapsulate specific logic for different states.
 * **Transitions**: Driven by `ITransition` interfaces and evaluated through `IPredicate` logic, ensuring clean and deterministic state flow.
 
@@ -30,7 +30,7 @@ The save/load system is highly flexible, multi-threaded, and centered around the
 Performance is prioritized with a highly optimized object pooling system. An `Instantiator` manages pools based on `Pooler` component group names, minimizing garbage collection spikes and ensuring smooth runtime performance during heavy instantiation events.
 
 ### 7. Advanced State-Machine-Driven UI
-The user interface is treated as a first-class citizen. A state-machine-driven UI system seamlessly manages hierarchical views featuring both `NavigationPanel`s and `SubPanel`s. It includes a rich, SO-driven transition system (`UITransitionPlayer` / `TransitionSO`) to easily orchestrate complex UI animations such as directional sliding and fading without hardcoded UI logic.
+The user interface is treated as a first-class citizen. A state-machine-driven UI system seamlessly manages hierarchical views featuring both `NavigationPanel`s and `SubPanel`s. It includes a rich, SO-driven transition system (`TransitionSO`) to easily orchestrate complex UI animations such as directional sliding and fading without hardcoded UI logic.
 
 ### 8. Editor Tooling & Best Practices
 The project utilizes `UNITY_EDITOR` preprocessor directives to create custom development-only tools, such as `BoxGizmos` for visualizing colliders and `PersisterEditor` for debugging persistence logic directly in the Unity Editor, ensuring the production build remains lightweight.
