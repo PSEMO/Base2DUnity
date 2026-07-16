@@ -13,12 +13,13 @@ namespace PSEMO.Player
 
         [HideInInspector] public Vector3 respawnPos;
 
+        //Able To
         [HideInInspector] public bool ableToInteract;
 
         void Awake()
         {
             inputHandler = new PlayerInputHandler(this);
-            
+
             ableToInteract = data.ableToInteract;
         }
 
@@ -60,6 +61,7 @@ namespace PSEMO.Player
         }
 
         private void SetRespawnPos(Vector3 pos) => respawnPos = pos;
+
         public void EnableAbility(AbilityType type)
         {
             switch (type)
